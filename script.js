@@ -1,8 +1,15 @@
 //your code here
-let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
-        displayOutput = 'original  : ' +touristSpots  ;
+const bands = ['The Beatles', 'Led Zeppelin', 'Pink Floyd', 'Aerosmith'];
+function strip(word) {
+const regex = /^(a |the |an )/i;
+return word.replace(regex, '').trim();
+}
 
-        var sortedArr = touristSpots.sort();
-        displayOutput += '\nSorted : ' + sortedArr;
+const sortedBands = bands.sort((a, b) => (strip(a) > strip(b)) ? 1 : -1);
 
-        document.getElementById('output').innerHTML = displayOutput;
+const bandList = document.getElementById('bands');
+sortedBands.forEach(band => {
+const listItem = document.createElement('li');
+listItem.textContent = band;
+bandList.appendChild(listItem);
+});
